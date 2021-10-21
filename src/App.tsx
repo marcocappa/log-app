@@ -1,19 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
+import Upload from './components/upload/Upload';
+import Table from './components/table/Table';
+import { parseFile } from './utils/parseData';
 import './App.css';
 
 function App(): JSX.Element {
+  const [error, setError] = useState('');
+  const [totalViews, setTotalViews] = useState({});
+  const [uniqueViews, setUniqueViews] = useState({});
+
+  const handleFileChange = async (files: FileList | null) => {
+    if (!files) {
+      setError('Error: Something went wrong uploading the file!');
+      return;
+    }
+    const fileData = await new Response(files[0]).text();
+    const { totalViews, uniqueViews } = parseFile(fileData);
+    setTotalViews(totalViews);
+    setUniqueViews(uniqueViews);
+  };
+
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Log App</h1>
+      <Upload onFileChange={handleFileChange} />
+      {error && 'Error: Something went wrong uploading the file or data wrong!'}
+      {!error && totalViews && <Table header={['url', 'total views']} body={totalViews} />}
+      {!error && totalViews && <Table header={['url', 'unique views']} body={uniqueViews} />}
     </div>
   );
 }
