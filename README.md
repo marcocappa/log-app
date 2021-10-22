@@ -37,7 +37,7 @@ and it will render two tables with the parsed data:
 
 ![Table Total Views per url](./src/assets/table1.png)
 
-![Table Unique Views per url](./src/assets/table1.png)
+![Table Unique Views per url](./src/assets/table2.png)
 
 ## Available Scripts
 
