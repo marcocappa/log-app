@@ -5,6 +5,7 @@ import Table from './Table';
 
 test('invoke onFileChange on input change event', async () => {
   const props = {
+    title: 'Total views table',
     header: ['urls', 'totalViews'],
     body: {
       0: { url: '/home', count: 3, ips: ['100.318.035.038', '101.318.035.038', '102.318.035.038'] },
@@ -29,4 +30,7 @@ test('invoke onFileChange on input change event', async () => {
   const aboutCount = screen.getByText('1');
   expect(about).toBeInTheDocument();
   expect(aboutCount).toBeInTheDocument();
+
+  const title = screen.getByText('Total views table');
+  expect(title).toBeInTheDocument();
 });
