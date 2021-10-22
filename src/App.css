@@ -1,0 +1,32 @@
+.app {
+  margin: 0 auto;
+  max-width: 690px;
+}
+
+.app-image {
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.app-upload {
+  margin-bottom: 1.5rem;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+  border: 1px solid #111;
+}
+
+thead tr th,
+tbody tr td {
+  width: 50%;
+  text-align: left;
+  border: 1px solid #111;
+  padding: 4px;
+}
+
+thead tr th {
+  background-color: #b5d6ff;
+}

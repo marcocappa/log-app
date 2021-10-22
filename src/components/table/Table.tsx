@@ -1,24 +1,30 @@
-import { Data } from '../../types';
-
+import React from 'react';
+import { DataObject } from '../../types';
 interface TableProp {
-  body: Data;
+  body: DataObject;
   header: string[];
+  title: string;
 }
 
-function Table({ body, header }: TableProp): JSX.Element {
+function Table({ title, body, header }: TableProp): JSX.Element {
   const renderHeaders = () => {
-    return header.map((head) => <th key={head}>{head}</th>);
+    return header.map((head) => (
+      <th data-testid={`th-${head}`} key={head}>
+        {head}
+      </th>
+    ));
   };
   const renderBody = () => {
-    return Object.entries(body).map((row) => (
-      <tr key={row[0]}>
-        <td>{row[0]}</td>
-        <td>{row[1]}</td>
+    return Object.keys(body).map((key) => (
+      <tr key={key}>
+        <td data-testid={`td-url-${key}`}>{body[key]?.url}</td>
+        <td data-testid={`td-count-${key}`}>{body[key]?.count}</td>
       </tr>
     ));
   };
   return (
     <div>
+      <h3>{title}</h3>
       <table>
         <thead>
           <tr>{renderHeaders()}</tr>
