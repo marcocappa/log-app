@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Log App started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This Log App was bootstrapped with Create React App using the typescript template.
 
 ## Available Scripts
 
-In the project directory, you can run:
+From the basic create react app the usual script:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Runs the app in the development mode.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Builds the app for production to the `build` folder.
 
 ### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+and added some script:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### `yarn lint`
 
-## Learn More
+Added and configured linter
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `yarn prepare`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Added script to use husky and set up pre-commit command to run linter
+
+## Log App functionality
+
+The user can select a ".log" file containing on each lines urls and ips:
+
+```
+/home   123.100.100.100
+/about  130.100.100.100
+```
+
+here an image as example:
+![Example log file](./src/assets/log.png)
+
+The application will parse the file and it will generate two objects ordered from the most views to least page views:
+
+example of totalViews object:
+
+```
+{
+    0:{
+        url: "/home",
+        count: 4,
+        ips: ["123.100.100.100", ...]
+    }
+    1:{
+        url: "/about",
+        count: 2,
+        ips: ["123.100.100.100", ...]
+    }
+}
+```
+
+and it will render two tables with the parsed data:
+
+![Table Total Views per url](./src/assets/table1.png)
+
+![Table Unique Views per url](./src/assets/table1.png)
