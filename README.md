@@ -59,7 +59,7 @@ Builds the app for production to the `build` folder.
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-and added some script:
+\*\*and added some script:
 
 ### `yarn lint`
 
